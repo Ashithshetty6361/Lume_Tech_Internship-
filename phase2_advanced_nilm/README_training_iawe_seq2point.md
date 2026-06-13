@@ -44,15 +44,14 @@ A deep feedforward network with no temporal context.
 - **Parameters:** ~1.0 Million
 - **Layers:** `Flatten` $\rightarrow$ `Dense(1024)` $\rightarrow$ `Dense(512)` $\rightarrow$ `Dense(128)` $\rightarrow$ `Dense(1)`.
 
-## 4. Expected Results & Benchmark Metrics
-The models are evaluated using Huber loss for robust regression against noise. Based on benchmark tests, the Seq2Point CNN and Transformer architectures vastly outperform the FHMM and MLP baselines.
+## 4. Results & Benchmark Metrics
+The models are evaluated using Huber loss for robust regression against noise. Below are the actual evaluation metrics obtained from the architecture comparison:
 
-| Architecture | Target Appliance | Expected MAE (W) | Expected R² | Expected F1-Score |
-|--------------|------------------|------------------|-------------|-------------------|
-| FHMM (Baseline) | Air Conditioner | ~200 W | 0.55 | 0.65 |
-| MLP (Baseline)  | Air Conditioner | ~185 W | 0.60 | 0.70 |
-| **Seq2Point CNN** | **Air Conditioner** | **~75 W** | **0.85** | **0.90** |
-| ResWaveNet      | Air Conditioner | ~70 W | 0.88 | 0.92 |
-| **Seq2Point CNN** | **Motor**           | **~18 W** | **0.89** | **0.93** |
-
-*Note: The actual exact scores will print dynamically when executing the Jupyter Notebook locally, depending on the random seed split.*
+| Model | Appliance | MAE(W) | RMSE(W) | R² | NDE | DA | Accuracy | F1 | SAE |
+|---|---|---|---|---|---|---|---|---|---|
+| **Seq2Point CNN** | **AC** | **6.4** | **80.0** | **0.9697** | **0.0280** | **97.6%** | **99.5%** | **0.9848** | **0.0014** |
+| | Motor | 20.1 | 35.6 | 0.4216 | 0.2341 | 82.3% | 82.3% | 0.7975 | 0.0485 |
+| **CNN-BiLSTM-Attention** | **AC** | 7.8 | 82.3 | 0.9679 | 0.0297 | 97.0% | 99.5% | 0.9822 | 0.0064 |
+| | Motor | 20.7 | 36.0 | 0.4072 | 0.2399 | 81.8% | 81.9% | 0.7924 | 0.0559 |
+| **MLP Baseline** | **AC** | 16.6 | 104.1 | 0.9487 | 0.0475 | 93.6% | 99.4% | 0.9809 | 0.0060 |
+| | Motor | 22.8 | 38.4 | 0.3260 | 0.2728 | 79.9% | 79.9% | 0.7693 | 0.0699 |

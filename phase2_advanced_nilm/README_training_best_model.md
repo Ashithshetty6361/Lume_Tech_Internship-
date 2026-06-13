@@ -36,11 +36,8 @@ The model contains **~5.3 Million parameters** and is structured as follows:
 The model is trained for 50 epochs using the Adam Optimizer and **Huber Loss ($\delta=1.0$)**.
 
 **Validation & Test Performance:**
-During training, the multi-output model stabilizes at highly accurate disaggregation limits. Below are the expected evaluation benchmarks based on standard tests:
 
-| Appliance Output Head | Expected MAE (W) | Expected Validation MAE (Normalized) | Expected F1-Score |
-|-----------------------|------------------|--------------------------------------|-------------------|
-| **Air Conditioner**   | ~72 W            | ~0.1030                              | 0.94              |
-| **Motor / Water Pump**| ~15 W            | ~0.1030                              | 0.96              |
-
-*Note: The actual exact scores and detailed waveform plots will print dynamically when running the Jupyter Notebook locally.*
+| Appliance | MAE (W) | RMSE (W) | R² | NDE | DA | Accuracy | F1-Macro | SAE |
+|---|---|---|---|---|---|---|---|---|
+| **Air Conditioner** | 135.5 | 471.4 | -0.0518 | 0.9736 | 48.0% | 90.7% | 0.5484 | 0.8934 |
+| **Motor** | 36.6 | 44.5 | 0.0957 | 0.3659 | 67.7% | 63.8% | 0.4698 | 0.0326 |
